@@ -172,6 +172,18 @@ api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   desc = "Define or override some highlight groups",
   callback = function()
+    for _, group in ipairs({
+      "Normal",
+      "NormalNC",
+      "SignColumn",
+      "FoldColumn",
+      "LineNr",
+      "EndOfBuffer",
+      "MsgArea",
+    }) do
+      vim.api.nvim_set_hl(0, group, { bg = "None", update = true })
+    end
+
     -- For yank highlight
     vim.api.nvim_set_hl(
       0,
